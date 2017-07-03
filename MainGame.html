@@ -1,0 +1,164 @@
+<!--https://www.w3schools.com/code/tryit.asp?filename=FH7QSEQJB4W5-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
+
+.btn {
+	width: 150px;
+    height: 150px;
+}
+
+/* The heart of the matter */
+.btn-matrix > .btn:nth-child(5n+6) {
+  clear: left;
+  margin-left: 0;
+}
+.btn-matrix > .btn:nth-child(n+6) {
+  margin-top: -1px;
+}
+.btn-matrix > .btn:first-child {
+  border-bottom-left-radius: 0;
+}
+.btn-matrix > .btn:nth-child(6) {
+  border-top-right-radius: 4px !important;
+}
+.btn-matrix > .btn:nth-last-child(6) {
+  border-bottom-left-radius: 4px !important;
+}
+.btn-matrix > .btn:last-child {
+  border-top-right-radius: 0;
+}
+
+/* Decorations */
+.btn-matrix {
+  margin: 20px;
+}
+</style>
+<head>
+<body>
+<div>
+	<form>
+  Input Seed (must be a number):<br>
+  <input id="entryText" type="text" name="firstname">
+  <button id="submit" type="button" onclick="sendSeed()">Submit</button>
+	</form>
+</div>
+
+<div class="btn-group btn-matrix">
+  <button id="b0" type="button" class="btn btn-default" onclick="changeBtnColor('b0')">Button 01</button>
+  <button id="b1" type="button" class="btn btn-default" onclick="changeBtnColor('b1')">Button 02</button>
+  <button id="b2" type="button" class="btn btn-default" onclick="changeBtnColor('b2')">Button 03</button>
+  <button id="b3" type="button" class="btn btn-default" onclick="changeBtnColor('b3')">Button 04</button>
+  <button id="b4" type="button" class="btn btn-default" onclick="changeBtnColor('b4')">Button 05</button>
+  <button id="b5" type="button" class="btn btn-default" onclick="changeBtnColor('b5')">Button 06</button>
+  <button id="b6" type="button" class="btn btn-default" onclick="changeBtnColor('b6')">Button 07</button>
+  <button id="b7" type="button" class="btn btn-default" onclick="changeBtnColor('b7')">Button 08</button>
+  <button id="b8" type="button" class="btn btn-default" onclick="changeBtnColor('b8')">Button 09</button>
+  <button id="b9" type="button" class="btn btn-default" onclick="changeBtnColor('b9')">Button 10</button>
+  <button id="b10" type="button" class="btn btn-default" onclick="changeBtnColor('b10')">Button 11</button>
+  <button id="b11" type="button" class="btn btn-default" onclick="changeBtnColor('b11')">Button 12</button>
+  <button id="b12" type="button" class="btn btn-default" onclick="changeBtnColor('b12')">Button 13</button>
+  <button id="b13" type="button" class="btn btn-default" onclick="changeBtnColor('b13')">Button 14</button>
+  <button id="b14" type="button" class="btn btn-default" onclick="changeBtnColor('b14')">Button 15</button>
+  <button id="b15" type="button" class="btn btn-default" onclick="changeBtnColor('b15')">Button 16</button>
+  <button id="b16" type="button" class="btn btn-default" onclick="changeBtnColor('b16')">Button 17</button>
+  <button id="b17" type="button" class="btn btn-default" onclick="changeBtnColor('b17')">Button 18</button>
+  <button id="b18" type="button" class="btn btn-default" onclick="changeBtnColor('b18')">Button 19</button>
+  <button id="b19" type="button" class="btn btn-default" onclick="changeBtnColor('b19')">Button 20</button>
+  <button id="b20" type="button" class="btn btn-default" onclick="changeBtnColor('b20')">Button 21</button>
+  <button id="b21" type="button" class="btn btn-default" onclick="changeBtnColor('b21')">Button 22</button>
+  <button id="b22" type="button" class="btn btn-default" onclick="changeBtnColor('b22')">Button 23</button>
+  <button id="b23" type="button" class="btn btn-default" onclick="changeBtnColor('b23')">Button 24</button>
+  <button id="b24" type="button" class="btn btn-default" onclick="changeBtnColor('b24')">Button 25</button>
+</div>
+
+<script>
+var wordList = ['peck', 'windmill', 'party', 'dentist', 'lawn', 'mower', 'softball', 'wig', 'stain', 'cuff', 'sunburn', 'funny', 'sheet', 'hair', 'dryer', 'nightmare', 'iPad', 'shadow', 'wax', 'fog', 'sip', 'bathroom', 'scale', 'taxi', 'pizza', 'sand', 'huddle', 'cowboy', 'ticket', 'doghouse', 'stiff', 'knot', 'president', 'owl', 'wrench', 'story', 'whisk', 'quicksand', 'spine', 'chess', 'artist', 'vest', 'gingerbread', 'man', 'spiderweb', 'bobsled', 'lung', 'washing', 'machine', 'oar', 'torch', 'eraser', 'mini', 'blinds', 'mouse', 'trap', 'swordfish', 'jar', 'cramp', 'flamingo', 'cast', 'honk', 'mirror', 'business', 'trip', 'chalk', 'gym', 'volcano', 'ping', 'pong', 'snowball', 'roof', 'fly', 'fang', 'bicycle', 'bear', 'cape', 'puppet', 'piano', 'lipstick', 'salute', 'hula', 'hoop', 'penguin', 'banana', 'peel', 'whisper', 'popsicle', 'Frankenstein', 'earthquake', 'yo-yo', 'road', 'rain', 'alarm', 'clock', 'dog', 'leash', 'chop', 'pajamas', 'slam', 'dunk', 'fiddle', 'seashell', 'jog', 'seesaw', 'nap', 'cheerleader', 'blind', 'beg', 'shopping', 'cart', 'limbo', 'newspaper', 'twist', 'rhinoceros', 'cow', 'tickle', 'fetch', 'violin', 'cage', 'cello', 'braid', 'skateboard', 'stairs', 'trumpet', 'mop', 'shovel', 'money', 'soap', 'saddle', 'wink', 'tree', 'spider', 'think', 'taxi', 'alarm', 'clock', 'tool', 'banana', 'peel', 'flagpole', 'money', 'wallet', 'ballpoint', 'pen', 'sunburn', 'wedding', 'ring', 'spy', 'baby-sitter', 'aunt', 'acne', 'bib', 'puzzle', 'piece', 'pawn', 'astronaut', 'tennis', 'shoes', 'blue', 'jeans', 'twig', 'outer', 'space', 'banister', 'batteries', 'doghouse', 'campsite', 'plumber', 'bedbug', 'throne', 'tiptoe', 'log', 'mute', 'pogo', 'stick', 'stoplight', 'ceiling', 'fan', 'bedspread', 'bite', 'stove', 'windmill', 'nightmare', 'stripe', 'spring', 'wristwatch', 'eat', 'matchstick', 'gumball', 'bobsled', 'bonnet', 'flock', 'sprinkler', 'living', 'room', 'laugh', 'snuggle', 'sneeze', 'bud', 'elf', 'headache', 'slam', 'dunk', 'Internet', 'earache', 'robot', 'foil', 'rib', 'robe', 'crumb', 'paperback', 'hurdle', 'rattle', 'fetch', 'date', 'iPod', 'dance', 'cello', 'flute', 'dock', 'prize', 'dollar', 'puppet', 'brass', 'firefighter', 'huddle', 'easel', 'pigpen', 'bunk', 'bed', 'bowtie', 'fiddle', 'dentist', 'rollerblades', 'smog', 'grill', 'goblin', 'coach', 'claw', 'cloud', 'shelf', 'recycle', 'China', 'India', 'USA', 'Brazil', 'Mexico', 'Russia', 'Japan', 'Thailand', 'UK', 'Australia', 'SouthKorea', 'NorthKorea', 'Spain', 'France', 'Italy', 'California', 'Hawaii', 'Florida', 'Texas', 'Alabama', 'Kentucky', 'Obama', 'Biden', 'Democrat', 'Republican', 'Trump', 'Stonehenge', 'Pyramids', 'GoldenGate', 'EiffelTower', 'GreatWall', 'Sphinx', 'TajMahal', 'WhiteHouse', 'FidgetSpinner', 'slime', 'SnapChat', 'Facebook', 'Instagram', 'Pokemon'];
+var openColors = [];
+var colors = [];
+var rand = Math.random();
+
+function sendSeed() {
+	var seed = document.getElementById("entryText").value;
+    document.getElementById("submit").innerHTML = "Seed is: " + seed;
+    startColors();
+	randomColors(seed);
+    
+}
+
+function startColors() {
+	for (i = 0; i < 25; i++) {
+    	colors.push('#d5d2d8');
+        openColors.push('Open');
+    }
+}
+
+function randomSeed(seed) {
+	var x = Math.sin(++seed) * 5432;
+    return (x - Math.floor(x));
+}
+
+function setColor(num, color) {
+	if (openColors[num] == 'Open') {
+    	openColors[num] = 'Taken';
+        colors[num] = color;
+    }
+    else {
+    	if (num >= 24) {num = 0}
+    	setColor(num+2, color);
+    }
+}
+
+function randomColors(seed) {
+	var blue = '#639af2';
+    var red = '#a86b6b';
+    var black = '#290451';
+    var grey = '#d5d2d8';
+
+    var curBtn = Math.floor(randomSeed(seed+i) * 25);
+    
+    setColor(curBtn, black);
+    
+	for (i = 0; i < 8; i++) {
+    	curBtn = Math.floor(randomSeed(++seed) * 25);
+        setColor(curBtn, blue);
+    }
+    
+    for (j = 0; j < 8; j++) {
+    	curBtn = Math.floor(randomSeed(++seed) * 25);
+        setColor(curBtn, red);
+    }
+}
+
+function changeBtnText(btnID) {
+	document.getElementById(btnID).innerHTML = wordList[Math.floor(Math.random() * 283)];
+}
+
+function changeBtnColor(btnID) {
+	document.getElementById(btnID).style.background = colors[btnID.slice(1)];
+}
+
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i--) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+}
+
+shuffle(wordList);
+
+for (i = 0; i < 25; i++) {
+	var curBtn = "b" + i;
+    document.getElementById(curBtn).innerHTML = wordList[i];
+}
+
+</script>
+
+</body>
+</html>
